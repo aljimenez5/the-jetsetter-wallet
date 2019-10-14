@@ -1,0 +1,13 @@
+<%if !logged_in?%>
+    <%= link_to 'Sign Up', sign_up_path %>
+    <br>
+    <%= link_to 'Log In', log_in_path %>
+<%end%>
+
+<%@countries.each do |country|%>
+    <h1> <%=country.name%> </h1>
+    <%country.cities.each do |city| %>
+        <h2><%= city.name %></h2>
+    <%end%>
+<%end%>
+

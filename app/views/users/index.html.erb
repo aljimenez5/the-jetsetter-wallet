@@ -1,0 +1,7 @@
+<h1>The Jetsetters</h1>
+
+<% @users.each do |user|%>
+    <%= user.username %>
+    Cities Visited: <%= user.cities.count %>
+    Countries Visited: <%= user.countries.count %>
+<%end%>
