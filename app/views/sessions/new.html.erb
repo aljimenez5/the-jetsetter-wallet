@@ -2,11 +2,8 @@
   <div class="notice"><%= flash[:notice] %></div>
 <% end %>
 
-<h2> Jetsetter Sign Up </h2>
+<h2> Jetsetter Log In </h2>
 <%= form_for :user do |f|%>
-    <p> <%= f.label :username %>
-    <%= f.text_field :username %> </p>
-
     <p><%= f.label :email %>
     <%= f.text_field :email %></p>
 
@@ -16,6 +13,6 @@
     <p><%= f.label :password_confirmation %>
     <%= f.text_field :password_confirmation %></p>
 
-    <%= f.submit "Sign Up" %>
+    <%= f.submit "Log In" %>
 
 <%end%>

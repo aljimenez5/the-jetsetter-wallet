@@ -5,8 +5,11 @@ Rails.application.routes.draw do
   post '/sign_up' => "users#create"
   get '/log_in' => "sessions#new"
   post '/log_in' => "sessions#create"
-  resources :users, only: [:destroy]
-  resources :sessions, only: [:destroy]
+  get '/log_out' => "sessions#destroy"
+  delete '/log_out' => "sessions#destroy"
+  
+  resources :users, only: [:show, :edit, :update, :destroy]
+  
   
   resources :users, only: [:show] do
     resources :trips do
