@@ -1,3 +1,17 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  root to: "homepage#index"
+
+  resources :users, only: [:show] do
+    resources :trips do
+      resources :activities
+    end
+  end
+
+  resources :countries, only: [:show] do
+    resources :cities, only: [:show] do 
+      resources :trips, only: [:show] do
+        resources :activities, only: [:show]
+      end
+    end
+  end
 end
