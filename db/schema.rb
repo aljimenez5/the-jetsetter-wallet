@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_14_004000) do
+ActiveRecord::Schema.define(version: 2019_10_14_031747) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "activities", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.integer "city_id"
+    t.integer "trip_id"
+  end
 
   create_table "cities", force: :cascade do |t|
     t.string "name"
@@ -35,34 +42,12 @@ ActiveRecord::Schema.define(version: 2019_10_14_004000) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "lodgings", force: :cascade do |t|
-    t.string "category"
-    t.string "name"
-    t.string "address"
-    t.string "website"
-    t.datetime "departure_date_time"
-    t.datetime "arrival_date_time"
-    t.integer "city_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "transportations", force: :cascade do |t|
-    t.string "category"
-    t.string "company"
-    t.datetime "departure_date_time"
-    t.datetime "arrival_date_time"
-    t.integer "departure_city_id"
-    t.integer "arrival_city_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "trips", force: :cascade do |t|
     t.string "name"
     t.datetime "start_date"
     t.datetime "end_date"
     t.integer "user_id"
+    t.integer "city_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

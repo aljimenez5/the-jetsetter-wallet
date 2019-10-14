@@ -1,8 +1,7 @@
 class Trip < ApplicationRecord
     belongs_to :user
-    has_and_belongs_to_many :cities
-    has_and_belongs_to_many :lodgings
-    has_and_belongs_to_many :transportations
+    belongs_to :city
+    has_many :activities
     has_many :favorite_trips
     has_many :favorited_by, through: :favorite_trips, source: :user
     

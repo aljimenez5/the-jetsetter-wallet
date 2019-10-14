@@ -5,6 +5,7 @@ class Trips < ActiveRecord::Migration[6.0]
       t.datetime :start_date
       t.datetime :end_date
       t.integer :user_id
+      t.integer :city_id
 
       t.timestamps
     end
