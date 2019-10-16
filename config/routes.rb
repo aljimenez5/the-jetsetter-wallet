@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   post '/sign_up' => "users#create"
   get '/log_in' => "sessions#new"
   post '/log_in' => "sessions#create"
+  # get '/auth/google_oauth2', to: 'sessions#create_omniauth'
+  get '/auth/google_oauth2/callback', to: 'sessions#create_omniauth'
   get '/log_out' => "sessions#destroy"
   delete '/log_out' => "sessions#destroy"
   
