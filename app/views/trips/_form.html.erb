@@ -1,0 +1,30 @@
+<%= form_for :trip do |f|%>
+
+    <%=f.label :name, "Trip Name:"%>
+    <%=f.text_field :name, "Trip Name:"%>
+    <br>
+    <%= f.label :start_date %>
+    <%= f.date_field :start_date %>
+    <%= f.label :end_date %>
+    <%= f.date_field :end_date %>
+    <br>
+
+    <%= f.label :country %>
+  <%= select_tag :country, options_for_select(CS.countries.map { |c| [c[1], c[0]] } ) %>
+
+
+  <%= label_tag :state %>
+  <%= select_tag :state, options_for_select([]) %>
+
+
+
+  <%= form.label :hometown %>
+  <%= form.select :hometown, options_for_select([]) %>
+
+    <%=f.label :city_id, "City:"%>
+    <%=f.select :city_id, "City:"%>
+    <%=f.label :name, "Trip Name:"%>
+    <%=f.label :name, "Trip Name:"%>
+    <%=f.label :name, "Trip Name:"%>
+    <%=f.label :name, "Trip Name:"%>
+    <%=f.label :name, "Trip Name:"%>

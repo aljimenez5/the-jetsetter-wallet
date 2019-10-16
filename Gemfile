@@ -24,6 +24,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'pry'
 gem 'omniauth-google-oauth2'
 gem 'figaro'
+gem 'city-state'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
