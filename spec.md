@@ -20,7 +20,8 @@ Specs:
 >>_Created log_in_path with authentication_
 - [x] Include logout (how e.g. Devise)
 >>_Created log_out_path with link in user show page_
-- [ ] Include third party signup/login (how e.g. Devise/OmniAuth)
+- [x] Include third party signup/login (how e.g. Devise/OmniAuth)
+>>_Can log in and sign up with Google_
 - [x] Include nested resource show or index (URL e.g. users/2/recipes)
 - [x] Include nested resource "new" form (URL e.g. recipes/1/ingredients/new)
 - [x] Include form display of validation errors (form URL e.g. /recipes/new)

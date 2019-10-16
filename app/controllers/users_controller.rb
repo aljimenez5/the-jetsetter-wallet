@@ -19,7 +19,6 @@ class UsersController < ApplicationController
             flash[:notice] = "Password and Password Confirmation must match."
             redirect_to sign_up_path
         else
-            binding.pry
             user = User.create(user_params)
             session[:user_id] = user.id
             redirect_to user_path(current_user)

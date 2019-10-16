@@ -5,17 +5,12 @@ class SessionsController < ApplicationController
     end
 
     def create
-        if params[:user][:password] == params[:user][:password_confirmation]
-            @user = User.find_by(email: params[:user][:email]).try(:authenticate, (params[:user][:password]))
-            if @user 
-                session[:user_id] = @user.id 
-                redirect_to user_path(@user)
-            else
-                flash[:notice] = "Incorrect name and/or password."
-                redirect_to log_in_path
-            end
+        @user = User.find_by(email: params[:user][:email]).try(:authenticate, (params[:user][:password]))
+        if @user 
+            session[:user_id] = @user.id 
+            redirect_to user_path(@user)
         else
-            flash[:notice] = "Password and Password Confirmation must match."
+            flash[:notice] = "Incorrect email and/or password."
             redirect_to log_in_path
         end
     end
