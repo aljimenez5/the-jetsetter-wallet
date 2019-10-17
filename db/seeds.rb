@@ -5,3 +5,11 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+@data = File.read("#{Rails.root}/public/countriesToCities.json")
+@data_hash = JSON.parse(@data)
+
+@data_hash.keys.each do |country|
+    @country = Country.create(name: country)
+end

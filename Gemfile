@@ -25,6 +25,7 @@ gem 'pry'
 gem 'omniauth-google-oauth2'
 gem 'figaro'
 gem 'city-state'
+gem 'json'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

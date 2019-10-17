@@ -3,6 +3,8 @@
     <%=f.label "Trip Name" %>
     <%=f.text_field :name %>
     <br>
+    <%= f.hidden_field :user_id %>
+    <br>
     <%= f.label :start_date %>
     <%= f.date_field :start_date %>
     <%= f.label :end_date %>
@@ -10,8 +12,11 @@
     <br>
 
 
-    <%= f.label :city %>
-    <%= f.text_field :city%>
+    <%= f.fields_for :countries do |country| %>
+        <%= country.label :name %>
+        <%= country.grouped_options_for_select(CS.countries) %>
+    <%end%>
+
 
     <%= f.submit "Add Trip" %>
 <%end%>
