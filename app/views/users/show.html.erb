@@ -1,4 +1,10 @@
 <h2>Welcome Jetsetter, <%= @user.username %>!</h2>
 
+<%= link_to('Create New Trip', new_user_trip_path(current_user))%>
+<%= link_to('View My Trips', user_trips_path(current_user))%>
+<%= link_to('Create New Trip', log_out_path, method: :delete, action: :destroy)%>
+
+
+
 
 <%= link_to('Log Out', log_out_path, method: :delete, action: :destroy)%>
