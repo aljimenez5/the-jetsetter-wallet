@@ -56,3 +56,8 @@ ul.topnav li.right {float: right;}
     text-align: center;
 
 }
+
+.logo_header {
+    background-color: #111;
+    font-weight: bold;
+}
