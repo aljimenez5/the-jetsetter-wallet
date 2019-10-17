@@ -2,14 +2,33 @@
 <html>
   <head>
     <title>TheJetsetterWallet</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
 
-
-
-
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
   </head>
 
+  <ul class="topnav">
+    <li><a class="active" href="#home">Home</a></li>
+    <li><%= link_to 'Travel Locations', root_path %></li>
+    <li><%= link_to 'All Trips', trips_path %></li>
+    <%if !logged_in?%>
+      <li class="right"><%= link_to 'Sign Up', sign_up_path %></li>
+      <li class="right"><%= link_to 'Log In', log_in_path %></li>
+    <%else%>
+      <li class="right"><%= link_to('Log Out', log_out_path, method: :delete, action: :destroy)%></li>
+    <%end%>
+  </ul>
+
+
   <body>
+    <% if flash[:notice] %>
+      <div class="notice"><%= flash[:notice] %></div>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>

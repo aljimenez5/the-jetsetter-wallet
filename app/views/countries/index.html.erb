@@ -1,14 +1,16 @@
-<%if !logged_in?%>
-    <%= link_to 'Sign Up', sign_up_path %>
-    <br>
-    <%= link_to 'Log In', log_in_path %>
-<%end%>
-
-<%# <%@countries.each do |country| %> %>
-    <%# <h1> <%=country.name%> </h1> %>
-    <%# <%country.cities.each do |city| %> %>
-        <%# <h2><%= city.name %></h2> %>
-    <%# <%end%> %>
-<%# <%end%> %>
+<%@countries.sort.each do |country| %> 
+        <div class="card for_each_country">
+            <h5 class="card-header"><%=country.name%> </h5>
+            <div class="card-body">
+                <%country.cities.each do |city| %> 
+                    <p class="card-text"><%= city.name %></p>
+                    
+                    <a href="/countries/:id/cities/:id/trips" class="btn btn-primary">View 2543 Trips</a>
+                <%end%>
+            </div>
+        </div>
 
     
+<%end%>
+
+

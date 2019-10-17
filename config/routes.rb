@@ -16,10 +16,12 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :countries, only: [:show] do
-    resources :cities, only: [:show] do 
-      resources :trips, only: [:show] do
-        resources :activities, only: [:show]
+  resources :trips, only: [:index, :show]
+
+  resources :countries, only: [:index, :show] do
+    resources :cities, only: [:index, :show] do 
+      resources :trips, only: [:index, :show] do
+        resources :activities, only: [:index, :show]
       end
     end
   end
