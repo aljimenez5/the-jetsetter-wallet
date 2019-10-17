@@ -19,12 +19,14 @@ class SessionsController < ApplicationController
         @user = User.find_or_create_by(uid: auth['uid']) do |u|
             u.username = auth['info']['name']
             u.email = auth['info']['email']
+            u.password = SecureRandom.hex
             u.uid = auth['uid']
+
         end
 
         session[:user_id] = @user.id
 
-        render 'users/show'
+        redirect_to user_path(current_user)
     end
 
 
