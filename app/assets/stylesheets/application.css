@@ -1,6 +1,7 @@
 body {
     margin: 0;
     padding-top: 3em;
+    
 }
 
 /* Navigation */
@@ -36,6 +37,22 @@ ul.topnav li.right {float: right;}
   ul.topnav li {float: none;}
 }
 
-.card.for_each_country {
-    width: 25%;
+
+.card_for_each_country {
+    display: inline-grid;
+    height: 200px;
+    width: 300px;
+    padding: 1em;
+    text-align: center;
+    background-color: rgb(155, 129, 179);
+    margin: .5em;
+}
+
+.card_header {
+    padding: 3em;
+}
+
+.page_content_container {
+    text-align: center;
+
 }

@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     resources :trips do
       resources :activities
     end
+    resources :favorite_trips
   end
 
   resources :trips, only: [:index, :show]

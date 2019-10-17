@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>TheJetsetterWallet</title>
+    <title>The Jetsetter Wallet</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= csrf_meta_tags %>
@@ -14,13 +14,18 @@
   <ul class="topnav">
     <li><%= link_to 'Home', root_path %></li>
     <li><%= link_to 'Locations', countries_path %></li>
-    <li><%= link_to 'Trips', trips_path %></li>
     <%if !logged_in?%>
+      <li><%= link_to 'Trips', trips_path %></li>
       <li class="right"><%= link_to 'Sign Up', sign_up_path %></li>
       <li class="right"><%= link_to 'Log In', log_in_path %></li>
     <%else%>
-      <li class="right"><%= link_to current_user.username, user_path(current_user) %></li>
+      <li><%= link_to 'All Trips', trips_path %></li>
+      <li><%= link_to 'My Trips', user_trips_path(current_user) %></li>
+      <li><%= link_to 'Favorite Trips', user_favorite_trips_path(current_user) %></li>
+        
       <li class="right"><%= link_to('Log Out', log_out_path, method: :delete, action: :destroy)%></li>
+      <li class="right"><%= link_to current_user.username, user_path(current_user) %></li>
+      
     <%end%>
   </ul>
 
@@ -30,6 +35,8 @@
       <div class="notice"><%= flash[:notice] %></div>
     <% end %>
 
-    <%= yield %>
+    <div class="page_content_container">
+      <%= yield %>
+    </div>
   </body>
 </html>
