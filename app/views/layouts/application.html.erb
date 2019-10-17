@@ -12,21 +12,21 @@
   </head>
 
   <ul class="topnav">
-    <li><%= link_to 'Home', root_path %></li>
-    <li><%= link_to 'Locations', countries_path %></li>
+    <li><%= link_to 'The Jetsetter Wallet', root_path %></li>
+
     <%if !logged_in?%>
       <li><%= link_to 'Trips', trips_path %></li>
       <li class="right"><%= link_to 'Sign Up', sign_up_path %></li>
       <li class="right"><%= link_to 'Log In', log_in_path %></li>
     <%else%>
       <li><%= link_to 'All Trips', trips_path %></li>
-      <li><%= link_to 'My Trips', user_trips_path(current_user) %></li>
-      <li><%= link_to 'Favorite Trips', user_favorite_trips_path(current_user) %></li>
+      
         
       <li class="right"><%= link_to('Log Out', log_out_path, method: :delete, action: :destroy)%></li>
-      <li class="right"><%= link_to current_user.username, user_path(current_user) %></li>
+      <li class="right"><%= link_to current_user.username, user_trips_path(current_user) %></li>
       
     <%end%>
+    <li class="right"><%= link_to 'Jetsetters Worldwide', users_path %></li>
   </ul>
 
 
