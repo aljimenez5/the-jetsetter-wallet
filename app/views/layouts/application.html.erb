@@ -12,13 +12,14 @@
   </head>
 
   <ul class="topnav">
-    <li><a class="active" href="#home">Home</a></li>
-    <li><%= link_to 'Travel Locations', root_path %></li>
-    <li><%= link_to 'All Trips', trips_path %></li>
+    <li><%= link_to 'Home', root_path %></li>
+    <li><%= link_to 'Locations', countries_path %></li>
+    <li><%= link_to 'Trips', trips_path %></li>
     <%if !logged_in?%>
       <li class="right"><%= link_to 'Sign Up', sign_up_path %></li>
       <li class="right"><%= link_to 'Log In', log_in_path %></li>
     <%else%>
+      <li class="right"><%= link_to current_user.name, user_path(current_user) %></li>
       <li class="right"><%= link_to('Log Out', log_out_path, method: :delete, action: :destroy)%></li>
     <%end%>
   </ul>
