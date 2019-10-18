@@ -1,0 +1,15 @@
+<h1>Trips</h1>
+<% @trips.each do |trip|%>
+    <div class="trip_container">
+    <%= trip.name %>
+    <br>
+    From <%= trip.start_date%> To <%= trip.end_date%>
+    <br>
+    Location: <%= trip.city %>
+    <br>
+    Jetsetter: <%= trip.user.username %>
+    <br>
+    list of activities here
+    </div>
+<%end%>
+

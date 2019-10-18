@@ -8,7 +8,8 @@ Rails.application.routes.draw do
   get '/auth/google_oauth2/callback', to: 'sessions#create_omniauth'
   get '/log_out' => "sessions#destroy"
   delete '/log_out' => "sessions#destroy"
-  
+  get '/all_trips' => "homepage#index"
+  get '/all_jetsetters' => "users#index"
   
   resources :users do
     resources :trips do
@@ -17,7 +18,6 @@ Rails.application.routes.draw do
     resources :favorite_trips
   end
 
-  resources :trips, only: [:index, :show]
 
   resources :countries, only: [:index, :show] do
     resources :cities, only: [:index, :show] do 

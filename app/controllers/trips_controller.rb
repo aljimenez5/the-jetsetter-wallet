@@ -1,12 +1,10 @@
 class TripsController < ApplicationController
     def index
-        @trips = Trip.all
+        @user = User.find(params[:user_id])
     end 
 
     def new
         @trip = Trip.new(user_id: params[:user_id])
-        @countries = CS.countries
-        @cities = CS.cities
     end
 
     def create

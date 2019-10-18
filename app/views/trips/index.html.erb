@@ -1,6 +1,16 @@
-Here we will display all the trips
-
-
-<br>
-This link will take them to their favorite trips
-<li><%= link_to 'Favorite Trips', user_favorite_trips_path(current_user) %></li>
+<h1><%= @user.username %>'s Trips</h1>
+    <%= link_to 'Create New Trip', new_user_trip_path(current_user) %>
+    <%= link_to 'View Favorite Trips', user_favorite_trips_path(current_user) %>
+    <% @user.trips.each do |trip|%>
+        
+        <%= trip.name %>
+        <br>
+        From <%= trip.start_date%> To <%= trip.end_date%>
+        <br>
+        Location: <%= trip.city %>
+        <br>
+        Jetsetter: <%= trip.user.username %>
+        <br>
+        list of activities here
+        
+    <%end%>
