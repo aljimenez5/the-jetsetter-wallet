@@ -1,7 +1,6 @@
 body {
-    margin: 0;
-    padding-top: 3em;
-    
+  margin: 0;
+  padding-top: 3em;  
 }
 
 /* Navigation */
@@ -44,7 +43,7 @@ ul.topnav li.right {float: right;}
     width: 300px;
     padding: 1em;
     text-align: center;
-    background-color: rgb(155, 129, 179);
+    box-shadow: 5px 5px 10px grey;
     margin: .5em;
 }
 
@@ -54,10 +53,19 @@ ul.topnav li.right {float: right;}
 
 .page_content_container {
     text-align: center;
+    padding: 5em;
 
 }
 
 .logo_header {
     background-color: #111;
     font-weight: bold;
+}
+
+.sign_up_container, .log_in_container {
+  display: inline-grid;
+  box-shadow: 5px 5px 10px grey;
+  padding: 2em;
+  height: 350px;
+  width: 300px;
 }

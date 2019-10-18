@@ -1,15 +1,17 @@
-<h2> Jetsetter Log In </h2>
-<%= form_for :user do |f|%>
-    <p><%= f.label :email %>
-    <%= f.text_field :email %></p>
+<div class="log_in_container">
+    <h2> Jetsetter Log In </h2>
+    <%= form_for :user do |f|%>
+        <p><%= f.label :email %>
+        <%= f.text_field :email %></p>
 
-    <p><%= f.label :password %>
-    <%= f.text_field :password %></p>
+        <p><%= f.label :password %>
+        <%= f.text_field :password %></p>
 
-    <%= f.submit "Log In" %>
+        <%= f.submit "Log In" %>
 
-<%end%>
+    <%end%>
 
-<br>
-<h3> -OR- </h3>
-<%= link_to('Log in with Google', '/auth/google_oauth2')%>
+    <br>
+    <h3> -OR- </h3>
+    <%= link_to('Log in with Google', '/auth/google_oauth2')%>
+</div>

@@ -2,26 +2,29 @@
   <div class="notice"><%= flash[:notice] %></div>
 <% end %>
 
-<h2> Jetsetter Sign Up </h2>
-<%= form_for :user do |f|%>
-    <p> <%= f.label :username %>
-    <%= f.text_field :username %> </p>
 
-    <p><%= f.label :email %>
-    <%= f.text_field :email %></p>
+<div class="sign_up_container">
+  <h2> Jetsetter Sign Up </h2>
+  <%= form_for :user do |f|%>
+      <p> <%= f.label :username %>
+      <%= f.text_field :username %> </p>
 
-    <p><%= f.label :password %>
-    <%= f.text_field :password %></p>
+      <p><%= f.label :email %>
+      <%= f.text_field :email %></p>
 
-    <p><%= f.label :password_confirmation %>
-    <%= f.text_field :password_confirmation %></p>
+      <p><%= f.label :password %>
+      <%= f.text_field :password %></p>
 
-    <%= f.submit "Sign Up" %>
+      <p><%= f.label :password_confirmation %>
+      <%= f.text_field :password_confirmation %></p>
 
-<%end%>
+      <%= f.submit "Sign Up" %>
 
-<br>
+  <%end%>
 
-<h3> -OR- </h3>
+  <br>
 
-<%= link_to('Sign up with Google', '/auth/google_oauth2')%>
+  <h3> -OR- </h3>
+
+  <%= link_to('Sign up with Google', '/auth/google_oauth2')%>
+</div>
