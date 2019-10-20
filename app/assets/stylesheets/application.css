@@ -66,6 +66,11 @@ ul.topnav li.right {float: right;}
   display: inline-grid;
   box-shadow: 5px 5px 10px grey;
   padding: 2em;
-  height: 350px;
-  width: 300px;
+  min-height: 350px;
+  min-width: 300px;
+}
+
+.activity_container {
+  text-align: left;
+  padding: 1em;
 }

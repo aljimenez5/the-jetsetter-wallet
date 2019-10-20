@@ -1,38 +1,39 @@
-<%= form_for :trip do |f|%>
+<%= form_for :trip, url: user_trips_path(current_user) do |f|%>
 
-    <%=f.label :trip_name %>
+    <%=f.label :name, "Trip Name: " %>
     <%=f.text_field :name %>
     <br>
     <%= f.hidden_field :user_id %>
     <br>
-    <%= f.label :start_date %>
+    <%= f.label :start_date, "Start Date: " %>
     <%= f.date_field :start_date %>
     <br>
-    <%= f.label :end_date %>
+    <%= f.label :end_date, "End Date: " %>
     <%= f.date_field :end_date %>
     
-    <p>
+    <br>
+    <br>
 
-    <%= f.fields_for :city do |c| %>
-        <%= c.label :country_name %>
-        <%= c.collection_select :city_country, Country.order(:name), :id, :name %>
-        <br>
-        <%= c.label :city_name %>
+    <%= f.fields_for :city_attributes do |c| %>
+        <%= c.label :country_id, "Country: " %>
+        <%= c.collection_select :country_id, Country.order(:name), :id, :name %>
+        <%= c.label :city_name, "City: " %>
         <%= c.text_field :city_name %>
     <% end %>
-    </p>
 
-    <p>
-    <%= f.fields_for :activities do |activity| %>
-        <%= activity.label :name %>
+    <br>
+    <%= f.fields_for :activities_attributes do |activity| %>
+        <div class="activity_container">
+        <%= activity.label :name, "Activity Name: " %>
         <%= activity.text_field :name %>
         <br>
-        <%= activity.label :description %>
-        <%= activity.text_area :name %>
+        <%= activity.label :description, "Activity Description: " %>
+        <br>
+        <%= activity.text_area :description, size: "80x10"%>
+        </div>
 
     <%end%>
-    </p>
 
-
+    <br>
     <%= f.submit "Add Trip" %>
 <%end%>

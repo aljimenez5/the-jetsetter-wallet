@@ -1,4 +1,6 @@
 class TripsController < ApplicationController
+
+
     def index
         if params[:user_id]
             @trips = User.find(params[:user_id]).trips
@@ -8,27 +10,30 @@ class TripsController < ApplicationController
     end 
 
     def new
-        @trip = Trip.new(user_id: params[:user_id])
-        @trip.build_city
-        @trip.activities.build
+        if params[:user_id] && !User.exists?(params[:user_id])
+            flash[:notice] = "User not found."
+            redirect_to users_path
+        else
+            @trip = Trip.new(user_id: params[:user_id])
+            @trip.build_city
+            @trip.activities.build
+        end
     end
 
     def create
-        raise params
-        @trip = Trip.find_by(name: params[:trip][:name], user_id: params[:user_id])
-        @country = Country.find_by(name: params[:trip][:country][:name])
-        @city = City.find_by(name: params[:trip][:city][:name])
-        if @trip
-            flash[:notice] = "You already have a trip with this name."
+        @user = User.find_by(id: params[:trip][:user_id])
+        if !@user 
+            flash[:notice] = "User not found."
+        elsif @user != current_user
+            flash[:notice] = "Invalid User."
         else
-            
-
             @trip = Trip.create(trip_params)
-        end 
+            redirect_to user_trip_path(current_user, @trip.id)
+        end
     end
 
     def show
-
+        @trip = Trip.find_by(params[:trip_id])
     end 
 
 

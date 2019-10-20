@@ -12,4 +12,12 @@ class Trip < ApplicationRecord
     def city_visited(city)
         where("city LIKE ?", city)
     end
+
+    def activities_attributes=(activities_attributes)
+        self.activities << Activity.find_or_create_by(name: activities_attributes[:name], description: activities_attributes[:description])
+    end
+
+    def city_attributes=(city_attributes)
+        self.city = City.find_or_create_by(name: city_attributes[:city_name], country_id: city_attributes[:country_id])
+    end
 end

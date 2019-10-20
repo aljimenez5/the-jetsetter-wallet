@@ -1,7 +1,7 @@
 
 <% if logged_in? && params[:user_id] %>
     <h1><%= current_user.username%>'s Trips</h1>
-    <%= link_to 'Create New Trip', new_trip_path %>
+    <%= link_to 'Create New Trip', new_user_trip_path(current_user) %>
     <%= link_to 'View Favorite Trips', user_favorite_trips_path(current_user) %>
 <% else%>
     <h1>Trips Worldwide</h1>

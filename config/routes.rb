@@ -13,13 +13,11 @@ Rails.application.routes.draw do
   
 
   resources :users do
-    resources :trips, only: [:index, :show] do
-      resources :activities, only: [:index, :show]
-    end
+    resources :trips, only: [:index, :show, :new, :create, :edit, :update, :destroy]
     resources :favorite_trips, only: [:index, :create, :destroy]
   end
 
-  resources :trips, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+
   resources :activities, only: [:index, :show, :new, :create, :edit, :update, :destroy]
 
 
