@@ -1,5 +1,6 @@
 class TripsController < ApplicationController
-
+    before_action :require_login
+    skip_before_action :require_login, only: [:index, :show]
 
     def index
         if params[:user_id]
@@ -33,14 +34,22 @@ class TripsController < ApplicationController
     end
 
     def show
-        @trip = Trip.find_by(params[:trip_id])
+        @trip = Trip.find_by(id: params[:trip_id])
     end 
+
+    def edit
+        @trip = Trip.find_by(id: params[:trip_id])
+    end
 
 
     private
 
     def trip_params
-        params.require(:trip).permit(:name, :user_id, :start_date, :end_date, city_attributes: [:country_id, :city_name], activities_attributes: [:name, :description])
+        params.require(:trip).permit(:name, :start_date, :end_date, :user_id, city_attributes: [:country_id, :name], activities_attributes: [:name, :description])
+    end
+
+    def require_login
+        return head(:forbidden) unless session.include? :user_id
     end
 
 end

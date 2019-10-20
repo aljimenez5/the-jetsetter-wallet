@@ -1,0 +1,27 @@
+<div class="trip_container">
+    <h1><%= link_to @trip.name, user_trip_path(@trip.user, @trip) %></h1>
+    <p>
+    From: <%= @trip.start_date.strftime("%m/%d/%Y")%> 
+    <br>
+    To: <%= @trip.end_date.strftime("%m/%d/%Y")%>
+    <br>
+    Location: <%= @trip.city.name %>
+    <br>
+    Jetsetter: <%= link_to @trip.user.username, user_trips_path(@trip.user) %>
+    <br>
+    </p>
+
+    <br>
+    <% @trip.activities.each do |act|%>
+        <%= act.name%>
+        <br>
+        <%= act.description%>
+    <%end%>
+
+    <br>
+    <% if @trip.user == current_user %>
+        <%= link_to "Edit Trip", edit_user_trip_path(@trip.user, @trip)%>
+    <% else %>
+        <%= link_to "Save To Favorites",  user_favorite_trips_path(@trip.user, @trip) %>
+    <%end%>
+</div>

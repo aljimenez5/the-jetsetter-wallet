@@ -18,6 +18,8 @@ class Trip < ApplicationRecord
     end
 
     def city_attributes=(city_attributes)
-        self.city = City.find_or_create_by(name: city_attributes[:city_name], country_id: city_attributes[:country_id])
+        self.city = City.find_or_create_by(name: city_attributes[:name], country_id: city_attributes[:country_id])
     end
+
+    
 end

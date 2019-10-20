@@ -62,12 +62,25 @@ ul.topnav li.right {float: right;}
     font-weight: bold;
 }
 
-.sign_up_container, .log_in_container, .new_trip_container, .trips_container, .trip_container {
+.sign_up_container, .log_in_container, .new_edit_form_container {
   display: inline-grid;
   box-shadow: 5px 5px 10px grey;
   padding: 2em;
+  margin: .5em;
   min-height: 350px;
   min-width: 300px;
+
+}
+
+.trips_container, .trip_container {
+  display: inline-grid;
+  box-shadow: 5px 5px 10px grey;
+  padding: 2em;
+  margin: .5em;
+  height: 350px;
+  width: 300px;
+  overflow: auto;
+
 }
 
 .activity_container {
