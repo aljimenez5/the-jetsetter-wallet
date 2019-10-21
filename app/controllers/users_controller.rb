@@ -7,7 +7,11 @@ class UsersController < ApplicationController
     end 
 
     def new
-        @user = User.new
+        if logged_in?
+            redirect_to user_trips_path(current_user)
+        else
+            @user = User.new
+        end
     end
 
     def create
@@ -40,11 +44,5 @@ class UsersController < ApplicationController
         params.require(:user).permit(:username, :email, :password, :password_confirmation)
     end
 
-    def require_login
-        unless logged_in?
-        flash[:notice] = "You need to be signed in to access this page."
-        redirect_to root_path
-        end
-    end
 
 end

@@ -58,8 +58,5 @@ class TripsController < ApplicationController
         params.require(:trip).permit(:name, :start_date, :end_date, :user_id, city_attributes: [:country_id, :name], activities_attributes: [:name, :description])
     end
 
-    def require_login
-        return head(:forbidden) unless session.include? :user_id
-    end
 
 end

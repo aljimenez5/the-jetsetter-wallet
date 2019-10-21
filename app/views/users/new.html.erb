@@ -18,7 +18,8 @@
       <p><%= f.label :password_confirmation %>
       <%= f.text_field :password_confirmation %></p>
 
-      <%= f.submit "Sign Up" %>
+      <br>
+      <%= f.submit "Sign Up", class: "submit_button" %>
 
   <%end%>
 
@@ -26,5 +27,5 @@
 
   <h3> -OR- </h3>
 
-  <%= link_to('Sign up with Google', '/auth/google_oauth2')%>
+  <%= link_to 'Sign up with Google', '/auth/google_oauth2', class: "google-link"%>
 </div>

@@ -73,7 +73,7 @@ ul.topnav li.right {float: right;}
 
 }
 
-.trips_container, .trip_container {
+.trips_container, .trip_container, .user_container {
   display: inline-grid;
   box-shadow: 5px 5px 10px grey;
   padding: 2em;
@@ -100,4 +100,31 @@ ul.topnav li.right {float: right;}
   border-radius: .25rem;
   text-align: center;
   font-weight: bold;
+}
+
+
+.submit_button {
+  background-color: #333;
+  height: 50px;
+  min-width: 120px;
+  font-size: 15px;
+  color: white;
+  
+}
+
+.submit_button:hover {
+  background-color: #111;
+}
+
+a {
+  color: rgb(142, 76, 175);
+  text-decoration: none;
+}
+
+a.active {
+  color: rgb(142, 76, 175);
+}
+
+a:hover {
+  color: #333;
 }

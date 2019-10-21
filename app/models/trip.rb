@@ -5,6 +5,7 @@ class Trip < ApplicationRecord
     has_many :favorite_trips
     has_many :favorited_by, through: :favorite_trips, source: :user
     validates :name, :user_id, :city_id, :start_date, :end_date,  presence: true
+    validates :name, :city_id, :start_date, :end_date, uniqueness: true
     accepts_nested_attributes_for :activities
     accepts_nested_attributes_for :city, reject_if: proc {|attributes| attributes['name'].blank?}
     

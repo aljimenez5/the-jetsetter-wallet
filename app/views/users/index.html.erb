@@ -1,7 +1,8 @@
 <h1>Jetsetters Worldwide</h1>
 
     <% @users.each do |user|%>
-        <%= user.username %>
-        Cities Visited: <%= user.cities.count %>
-
+    <div class="user_container">
+        <%= link_to "Jetsetter #{user.username}", user_trips_path(user) %>
+        Cities Visited: <%= user.cities.uniq.count %>
+    </div>
     <%end%>

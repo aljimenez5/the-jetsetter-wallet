@@ -1,0 +1,5 @@
+<h1>Saved Favorites</h1>
+<br>
+<% @user_favorites.each do |fave|%>
+    <%= render partial: 'trips/content', locals: {trip: @trip = fave.trip}%>
+<%end%>
