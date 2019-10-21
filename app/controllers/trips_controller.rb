@@ -28,8 +28,14 @@ class TripsController < ApplicationController
         elsif @user != current_user
             flash[:notice] = "Invalid User."
         else
-            @trip = Trip.create(trip_params)
-            redirect_to user_trip_path(current_user, @trip.id)
+            @trip = Trip.new(trip_params)
+            # @trip.save
+            if !@trip.valid?
+                flash[:notice] = "Fields cannot be empty."
+                render 'new'
+            else
+                redirect_to user_trip_path(current_user, @trip.id)
+            end
         end
     end
 
@@ -39,7 +45,10 @@ class TripsController < ApplicationController
 
     def edit
         @trip = Trip.find_by(id: params[:id])
-        @city = City.find_by(id: @trip.city_id)
+    end
+
+    def update
+
     end
 
 

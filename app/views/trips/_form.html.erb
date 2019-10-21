@@ -17,9 +17,9 @@
 
         <%= f.fields_for :city_attributes do |c| %>
             <%= c.label :country_id, "Country: " %>
-            <%= c.collection_select :country_id, Country.order(:name), :id, :name %>
+            <%= c.collection_select :country_id, Country.order(:name), :id, :name, {:prompt => "Select a country", :selected => @trip.city.country_id} %>
             <%= c.label :name, "City: " %>
-            <%= c.text_field :name %>
+            <%= c.text_field :name, :value => @trip.city.name %>
         <% end %>
 
         <br>
