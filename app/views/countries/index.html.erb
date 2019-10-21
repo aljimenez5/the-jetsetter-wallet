@@ -1,11 +1,11 @@
 <%@countries.each do |country| %> 
         <div class="card_for_each_country">
-                <h3 class="card-header"><%=country.name%> </h3>
+                <h3 class="card-header"><%= link_to country.name, country_path(country)%> </h3>
 
                 <%country.cities.each do |city| %> 
                     <p class="card-text"><%= city.name %></p>
                     
-                    <a href="/countries/:id/cities/:id/trips" class="btn btn-primary">View 2543 Trips</a>
+                    <%= "Total of #{country.trips.count} Trips" %>
                 <%end%>
         </div>
 

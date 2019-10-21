@@ -1,5 +1,5 @@
 <div class="trip_container">
-    <h1><%= link_to @trip.name, user_trip_path(@trip.user, @trip) %></h1>
+    <h3><%= link_to @trip.name, user_trip_path(@trip.user, @trip) %></h3>
     <p>
     From: <%= @trip.start_date.strftime("%m/%d/%Y")%> 
     <br>
