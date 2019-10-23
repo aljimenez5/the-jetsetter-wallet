@@ -4,6 +4,7 @@ class FavoriteTripsController < ApplicationController
         @user_favorites = current_user.favorite_trips
     end
 
+
     def create
         if current_user
             @favorite = FavoriteTrip.create(favorite_trip_params)

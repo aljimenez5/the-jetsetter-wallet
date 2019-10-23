@@ -19,13 +19,19 @@
     <%end%>
 
     <br>
-    <% if @trip.user == current_user %>
-        <%= link_to "Edit Trip", edit_user_trip_path(@trip.user, @trip.id), class: "link_to_button"%>
-    <% else %>
-        <% if current_user.have_favorite?(@trip)%>
+
+    <% if logged_in? %>
+
+        <% if @trip.user == current_user%>
+            <%= link_to "Edit Trip", edit_user_trip_path(@trip.user, @trip.id), class: "link_to_button"%>
+        <% elsif current_user.have_favorite?(@trip)%>
             <%= button_to "Remove From Favorites", user_trip_favorite_trip_path(current_user.id, @trip.id, current_user.favorite_found(@trip).id), class: "submit_button", method: :delete%>
         <%else%>
-            <%= button_to "Save To Favorites",  user_trip_favorite_trips_path(current_user.id, @trip.id), class: "submit_button", method: :post%>
+            <%= button_to "Save To Favorites", user_trip_favorite_trips_path(current_user.id, @trip.id), class: "submit_button", method: :post %>
         <%end%>
+    <%else%>
+        <%= button_to "Save To Favorites", log_in_path, class: "submit_button", method: :get %>
+
     <%end%>
 </div>
+
