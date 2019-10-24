@@ -29,8 +29,8 @@
         <%else%>
             <%= button_to "Save To Favorites", user_trip_favorite_trips_path(current_user.id, @trip.id), class: "submit_button", method: :post %>
         <%end%>
-    <%else%>
-        <%= button_to "Save To Favorites", log_in_path, class: "submit_button", method: :get %>
+
+
 
     <%end%>
 </div>

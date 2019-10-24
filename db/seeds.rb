@@ -11,5 +11,10 @@
 @data_hash = JSON.parse(@data)
 
 @data_hash.keys.each do |country|
-    @country = Country.create(name: country)
+    @country = Country.find_or_create_by(name: country)
+    City.create(name: @data_hash["#{country}"][0], country_id: @country.id)
+    City.create(name: @data_hash["#{country}"][1], country_id: @country.id)
+    City.create(name: @data_hash["#{country}"][2], country_id: @country.id)
+    City.create(name: @data_hash["#{country}"][3], country_id: @country.id)
+
 end
