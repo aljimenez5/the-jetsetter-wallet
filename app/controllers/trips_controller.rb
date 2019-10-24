@@ -1,7 +1,9 @@
 class TripsController < ApplicationController
 
     def index
-        if params[:user_id]
+        if params[:country_id] && params[:city_id]
+            @trips = Trip.where(city_id: params[:city_id])
+        elsif params[:user_id]
             @trips = User.find(params[:user_id]).trips
         else
             @trips = Trip.all
@@ -16,6 +18,7 @@ class TripsController < ApplicationController
             @trip = Trip.new(user_id: params[:user_id])
             @trip.build_city
             @trip.activities.build
+
         end
     end
 

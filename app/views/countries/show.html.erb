@@ -1,0 +1,10 @@
+<h1>Cities To Visit In <%= @country.name%></h1>
+<%@country.cities.each do |city| %> 
+        <div class="card_for_each_country">
+                <h3 class="card-header"><%= link_to city.name, country_city_path(city)%> </h3>
+
+                 <%= link_to "Total of #{city.trips.count} Trips", country_city_trips_path(@country.id, city.id)  %>
+        </div>
+
+    
+<%end%>
