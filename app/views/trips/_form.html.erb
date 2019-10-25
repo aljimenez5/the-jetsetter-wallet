@@ -17,23 +17,21 @@
         
         <br>
         <br>
-
-        <%= f.fields_for :city do |c| %>
-            <%= c.label :country_id, "Country " %>
-            <%= c.collection_select :country_id, Country.order(:name), :id, :name, {:prompt => "Select a country"} %>
-            <%= c.label :name, "City " %>
-            <%= c.text_field :name %>
-        <% end %>
-
+        <%= f.fields_for :city do |city_form|%>
+            <%= city_form.label :country_id, "Country " %>
+            <%= city_form.collection_select :country_id, Country.order(:name), :id, :name, {:prompt => "Select a country"} %>
+            <%= city_form.label :name, "City " %>
+            <%= city_form.text_field :name %>
+        <%end%>
         <br>
-        <%= f.fields_for :activities do |activity| %>
+        <%= f.fields_for :activities do |activities_form| %>
             <div class="activity_container">
-            <%= activity.label :name, "Activity Name " %>
-            <%= activity.text_field :name %>
+            <%= activities_form.label :name, "Activity Name " %>
+            <%= activities_form.text_field :name %>
             <br>
-            <%= activity.label :description, "Activity Description " %>
+            <%= activities_form.label :description, "Activity Description " %>
             <br>
-            <%= activity.text_area :description, size: "80x10"%>
+            <%= activities_form.text_area :description, size: "80x10"%>
             </div>
 
         <%end%>

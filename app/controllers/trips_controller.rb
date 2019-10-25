@@ -17,8 +17,7 @@ class TripsController < ApplicationController
         else
             @trip = Trip.new(user_id: current_user.id)
             @trip.build_city
-            @trip.activities.build
-
+            5.times { @trip.activities.build }
         end
     end
 
@@ -31,6 +30,7 @@ class TripsController < ApplicationController
         else
             @trip = Trip.new(trip_params)
             @trip.save
+            binding.pry
             if !@trip.valid?
                 flash[:notice] = "Fields cannot be empty."
                 render 'new'
@@ -49,14 +49,14 @@ class TripsController < ApplicationController
     end
 
     def update
-
+        binding.pry
     end
 
 
     private
 
     def trip_params
-        params.require(:trip).permit(:name, :start_date, :end_date, :user_id, city_attributes: [:country_id, :name])
+        params.require(:trip).permit(:name, :start_date, :end_date, :user_id, city_attributes: [:country_id, :name], activities_attributes: [:name, :description])
     end
 
 

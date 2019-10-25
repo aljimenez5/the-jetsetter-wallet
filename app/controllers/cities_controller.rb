@@ -6,6 +6,9 @@ class CitiesController < ApplicationController
     def new
 
     end
+
+    def create
+    end
     
     def show
         @city = City.find_by(id: params[:id])
