@@ -1,7 +1,7 @@
 <div class="new_edit_form_container">     
 
 
-    <%= form_for :trip, url: user_trips_path(current_user) do |f|%>
+    <%= form_with model: @trip, url: user_trips_path(current_user) do |f|%>
 
 
         <%=f.label :name, "Trip Name " %>
@@ -20,9 +20,9 @@
 
         <%= f.fields_for :city do |c| %>
             <%= c.label :country_id, "Country " %>
-            <%= c.collection_select :country_id, Country.order(:name), :id, :name, {:prompt => "Select a country", :selected => @trip.city.country_id} %>
+            <%= c.collection_select :country_id, Country.order(:name), :id, :name, {:prompt => "Select a country"} %>
             <%= c.label :name, "City " %>
-            <%= c.text_field :name, :value => @trip.city.name %>
+            <%= c.text_field :name %>
         <% end %>
 
         <br>

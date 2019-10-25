@@ -3,5 +3,5 @@ class City < ApplicationRecord
     has_many :trips
     has_many :activities, through: :trips
     has_many :users, through: :trips
-    validates :name, :country_id, presence: true, uniqueness: true
+    validates :name, presence: true, uniqueness: true
 end

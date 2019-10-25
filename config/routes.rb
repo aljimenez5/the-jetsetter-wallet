@@ -14,16 +14,17 @@ Rails.application.routes.draw do
   resources :users do
     resources :trips, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
       resources :favorite_trips, only: [:create, :destroy]
+      resources :activities, only: [:index, :show, :new, :create, :edit, :update, :destroy]
     end
     resources :favorite_trips, only: :index
   end
 
-  resources :activities, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+  
 
   resources :countries, only: [:index, :show] do
-    resources :cities, only: [:index, :show] do 
+    resources :cities, only: :show do 
       resources :trips, only: [:index, :show] do
-        resources :activities, only: [:index, :show]
+        resources :activities, only: :show
       end
     end
   end

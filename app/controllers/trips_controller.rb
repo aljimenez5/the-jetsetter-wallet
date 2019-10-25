@@ -15,7 +15,7 @@ class TripsController < ApplicationController
             flash[:notice] = "User not found."
             redirect_to users_path
         else
-            @trip = Trip.new(user_id: params[:user_id])
+            @trip = Trip.new(user_id: current_user.id)
             @trip.build_city
             @trip.activities.build
 
@@ -30,7 +30,7 @@ class TripsController < ApplicationController
             flash[:notice] = "Invalid User."
         else
             @trip = Trip.new(trip_params)
-            # @trip.save
+            @trip.save
             if !@trip.valid?
                 flash[:notice] = "Fields cannot be empty."
                 render 'new'
@@ -56,7 +56,7 @@ class TripsController < ApplicationController
     private
 
     def trip_params
-        params.require(:trip).permit(:name, :start_date, :end_date, :user_id, city_attributes: [:country_id, :name], activities_attributes: [:name, :description])
+        params.require(:trip).permit(:name, :start_date, :end_date, :user_id, city_attributes: [:country_id, :name])
     end
 
 

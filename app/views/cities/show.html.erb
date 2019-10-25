@@ -1,0 +1,18 @@
+<h1>Trips In <%= @city.name%></h1>
+<%@city.trips.each do |trip| %> 
+        <div class="card_for_each_country">
+                <h3 class="card-header"><%= link_to trip.name, user_trip_path(trip.user, trip.id)%> </h3>
+                <p>
+                From: <%= trip.start_date.strftime("%m/%d/%Y")%> 
+                <br>
+                To: <%= trip.end_date.strftime("%m/%d/%Y")%>
+                <br>
+                Location: <%= trip.city.name %>
+                <br>
+                Jetsetter: <%= link_to trip.user.username, user_trips_path(trip.user) %>
+                <br>
+                </p>
+
+        </div>
+   
+<%end%>
