@@ -5,6 +5,8 @@ body {
 }
 
 /* Navigation */
+
+
 ul.topnav {
   list-style-type: none;
   top: 0;
@@ -127,7 +129,14 @@ a.active {
 }
 
 a:hover {
-  color: #333;
+  opacity: .5;
+}
+
+.topnav a:hover {
+  background-color: #111;
+  color: white;
+  opacity: 1;
+  
 }
 
 
