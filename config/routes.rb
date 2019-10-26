@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: "countries#index"
+  root to: "sessions#index"
 
   get '/sign_up', to: "users#new"
   post '/sign_up', to: "users#create"
@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get '/auth/google_oauth2/callback', to: 'sessions#create_omniauth'
   get '/log_out', to: "sessions#destroy"
   delete '/log_out', to: "sessions#destroy"
+  get '/all_countries', to: "countries#index"
   get '/all_trips' , to: "trips#index"
   get '/all_jetsetters', to: "users#index"
 

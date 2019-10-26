@@ -43,7 +43,6 @@ class TripsController < ApplicationController
 
     def edit
         @trip = Trip.find_by(id: params[:id])
-        @trip.activities.build
     end
 
     def update

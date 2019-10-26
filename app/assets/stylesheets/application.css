@@ -129,3 +129,13 @@ a.active {
 a:hover {
   color: #333;
 }
+
+
+.homepage_image {
+  width: 1000px;
+  height: 600px;
+}
+
+.homepage_image:hover{
+  opacity: .5;
+}

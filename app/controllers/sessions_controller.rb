@@ -1,5 +1,9 @@
 class SessionsController < ApplicationController
     
+    def index
+
+    end
+    
     def new
         if logged_in?
             redirect_to user_trips_path(current_user)
