@@ -23,20 +23,17 @@ class TripsController < ApplicationController
 
     def create
         @user = User.find_by(id: params[:trip][:user_id])
-        if !@user 
-            flash[:notice] = "User not found."
-        elsif @user != current_user
+        @trip = Trip.find_by(name: params[:trip][:name], start_date: params[:trip][:start_date], end_date: params[:trip][:end_date], user_id: @user.id)
+        if !@user || @user != current_user
             flash[:notice] = "Invalid User."
+            redirect_to user_trips_path(current_user)
+        elsif @trip
+            flash[:notice] = "Trip already exists."
+            redirect_to new_user_trip_path(current_user)
         else
             @trip = Trip.new(trip_params)
             @trip.save
-            binding.pry
-            if !@trip.valid?
-                flash[:notice] = "Fields cannot be empty."
-                render 'new'
-            else
-                redirect_to user_trip_path(current_user, @trip.id)
-            end
+            redirect_to user_trip_path(current_user, @trip.id)
         end
     end
 
@@ -46,6 +43,7 @@ class TripsController < ApplicationController
 
     def edit
         @trip = Trip.find_by(id: params[:id])
+        @trip.activities.build
     end
 
     def update

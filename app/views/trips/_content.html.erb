@@ -5,7 +5,7 @@
     <br>
     To: <%= @trip.end_date.strftime("%m/%d/%Y")%>
     <br>
-    Location: <%= @trip.city.name %>
+    Location: <%= @trip.city.country.name%> - <%= @trip.city.name %> 
     <br>
     Jetsetter: <%= link_to @trip.user.username, user_trips_path(@trip.user) %>
     <br>
@@ -23,6 +23,7 @@
     <% if logged_in? %>
 
         <% if @trip.user == current_user%>
+            <%= link_to "Add Activity", new_user_trip_activity_path(@trip.user, @trip.id), class: "link_to_button"%>
             <%= link_to "Edit Trip", edit_user_trip_path(@trip.user, @trip.id), class: "link_to_button"%>
         <% elsif current_user.have_favorite?(@trip)%>
             <%= button_to "Remove From Favorites", user_trip_favorite_trip_path(current_user.id, @trip.id, current_user.favorite_found(@trip).id), class: "submit_button", method: :delete%>

@@ -1,0 +1,13 @@
+<div class="new_edit_form_container">        
+        <%= form_with model: @activity, url: user_trip_activities_path(current_user) do |f| %>
+            <div class="activity_container">
+            <%= f.label :name, "Activity Name " %>
+            <%= f.text_field :name %>
+            <br>
+            <%= f.label :description, "Activity Description " %>
+            <br>
+            <%= f.text_area :description, size: "80x10"%>
+            </div>
+            <%= f.submit "Submit Activity", class: "submit_button" %>
+        <%end%>
+</div>
