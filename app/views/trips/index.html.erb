@@ -1,10 +1,11 @@
-
-<% if logged_in? && params[:user_id] %>
-    <h1><%= current_user.username%>'s Trips</h1>
-    <%= link_to 'Create New Trip', new_user_trip_path(current_user) %>
+<% if current_user && @user.id == current_user.id%>
+    <h1><%= @user.username%>'s Trips</h1>
+    <%= link_to 'Create New Trip', new_user_trip_path(current_user.id) %>
     <br>
-    <%= link_to 'View Favorite Trips', user_favorite_trips_path(current_user) %>
+    <%= link_to 'View Favorite Trips', user_favorite_trips_path(current_user.id) %>
     <br>
+<% elsif params[:user_id] %>
+    <h1><%= @user.username%>'s Trips</h1>
 <% else%>
     <h1>Trips Worldwide</h1>
 <%end%>

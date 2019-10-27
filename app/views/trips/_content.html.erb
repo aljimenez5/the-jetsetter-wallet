@@ -1,4 +1,7 @@
 <div class="trip_container">
+
+   
+
     <h3><%= link_to @trip.name, user_trip_path(@trip.user, @trip) %></h3>
     <p>
     From: <%= @trip.start_date.strftime("%m/%d/%Y")%> 
@@ -8,31 +11,43 @@
     Location: <%= @trip.city.country.name%> - <%= @trip.city.name %> 
     <br>
     Jetsetter: <%= link_to @trip.user.username, user_trips_path(@trip.user) %>
-    <br>
     </p>
 
-    <br>
-    <% @trip.activities.each do |act|%>
-        <%= act.name%>
-        <br>
-        <%= act.description%>
-    <%end%>
-
-    <br>
-
-    <% if logged_in? %>
-
-        <% if @trip.user == current_user%>
-            <%= link_to "Add Activity", new_user_trip_activity_path(@trip.user, @trip.id), class: "link_to_button"%>
-            <%= link_to "Edit Trip", edit_user_trip_path(@trip.user, @trip.id), class: "link_to_button"%>
-        <% elsif current_user.have_favorite?(@trip)%>
-            <%= button_to "Remove From Favorites", user_trip_favorite_trip_path(current_user.id, @trip.id, current_user.favorite_found(@trip).id), class: "submit_button", method: :delete%>
-        <%else%>
-            <%= button_to "Save To Favorites", user_trip_favorite_trips_path(current_user.id, @trip.id), class: "submit_button", method: :post %>
+    <h4>Activities</h4>
+    <div class="activity_container">
+        <% @trip.activities.each do |act|%>
+            <p>
+            <% if logged_in? && @trip.user == current_user%>
+                <%= button_to "X", user_trip_activity_path(current_user.id, @trip.id, act.id), class: "delete_button", method: :delete%>
+            <%end%>
+            
+            <%= act.name%> - <%= act.description%>
+            </p>
         <%end%>
+    </div>
+    <br>
 
+     <div class="dropup">
+        <button class="dropbtn">Options</button>
+        <div class="dropup-content">
+            <% if logged_in? %>
 
+                <% if @trip.user == current_user%>
+                    <%= button_to "Add Activity", new_user_trip_activity_path(@trip.user, @trip.id), class: "submit_button", method: :get%>
+                    <%= button_to "Edit Trip", edit_user_trip_path(@trip.user, @trip.id), class: "submit_button", method: :get%>
+                    <%= button_to "Delete Trip", user_trip_path(current_user.id, @trip.id), class: "delete_submit_button", method: :delete %>
+                <% elsif current_user.have_favorite?(@trip)%>
+                    <%= button_to "Remove From Favorites", user_trip_favorite_trip_path(current_user.id, @trip.id, current_user.favorite_found(@trip).id), class: "submit_button", method: :delete%>
+                <%else%>
+                    <%= button_to "Save To Favorites", user_trip_favorite_trips_path(current_user.id, @trip.id), class: "submit_button", method: :post %>
+                <%end%>
+            <% else %>
+                <%= button_to "Log In", log_in_path, class: "submit_button", method: :get%>
+                <%= button_to "Sign Up", sign_up_path, class: "submit_button", method: :get%>
+            <%end%>
+        </div>
+    </div>
 
-    <%end%>
+    
 </div>
 

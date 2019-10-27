@@ -36,9 +36,12 @@ class ActivitiesController < ApplicationController
 
     end
 
-    def show
-
-    end 
+    def destroy
+        @trip = Trip.find_by(id: params[:trip_id], user_id: current_user.id)
+        @activity = Activity.find_by(id: params[:id], trip_id: @trip.id)
+        @activity.delete
+        redirect_to user_trip_path(current_user, @trip.id)
+    end
 
     private
 

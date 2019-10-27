@@ -3,8 +3,12 @@ class TripsController < ApplicationController
     def index
         if params[:country_id] && params[:city_id]
             @trips = Trip.where(city_id: params[:city_id])
+        elsif current_user && params[:user_id] == current_user.id
+            @user = current_user
+            @trips = current_user.trips
         elsif params[:user_id]
-            @trips = User.find(params[:user_id]).trips
+            @user = User.find(params[:user_id])
+            @trips = @user.trips
         else
             @trips = Trip.all
         end  
@@ -26,14 +30,14 @@ class TripsController < ApplicationController
         @trip = Trip.find_by(name: params[:trip][:name], start_date: params[:trip][:start_date], end_date: params[:trip][:end_date], user_id: @user.id)
         if !@user || @user != current_user
             flash[:notice] = "Invalid User."
-            redirect_to user_trips_path(current_user)
+            redirect_to user_trips_path(current_user.id)
         elsif @trip
             flash[:notice] = "Trip already exists."
-            redirect_to new_user_trip_path(current_user)
+            redirect_to new_user_trip_path(current_user.id)
         else
             @trip = Trip.new(trip_params)
             @trip.save
-            redirect_to user_trip_path(current_user, @trip.id)
+            redirect_to user_trip_path(current_user.id, @trip.id)
         end
     end
 
@@ -46,14 +50,23 @@ class TripsController < ApplicationController
     end
 
     def update
-        binding.pry
+        @user = User.find_by(id: params[:user_id])
+        @trip = Trip.find_by(id: params[:id])
+        @trip.update(trip_params)
+        redirect_to user_trip_path(current_user, @trip.id)
+    end
+
+    def destroy
+        @trip = Trip.find_by(id: params[:id], user_id: current_user.id)
+        @trip.delete
+        redirect_to user_trips_path(current_user)
     end
 
 
     private
 
     def trip_params
-        params.require(:trip).permit(:name, :start_date, :end_date, :user_id, city_attributes: [:country_id, :name], activities_attributes: [:name, :description])
+        params.require(:trip).permit(:name, :start_date, :end_date, :user_id, city_attributes: [:country_id, :name, :id], activities_attributes: [:name, :description, :id])
     end
 
 

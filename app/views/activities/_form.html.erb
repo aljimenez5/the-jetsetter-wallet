@@ -1,5 +1,13 @@
 <div class="new_edit_form_container">        
         <%= form_with model: @activity, url: user_trip_activities_path(current_user) do |f| %>
+            <b><%= @activity.trip.name%></b>
+            <br>
+            From: <%= @trip.start_date.strftime("%m/%d/%Y")%> 
+            <br>
+            To: <%= @trip.end_date.strftime("%m/%d/%Y")%>
+            <br>
+            Location: <%= @trip.city.country.name%> - <%= @trip.city.name %>
+            <br>
             <div class="activity_container">
             <%= f.label :name, "Activity Name " %>
             <%= f.text_field :name %>

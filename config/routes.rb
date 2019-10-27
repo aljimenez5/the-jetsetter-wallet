@@ -13,9 +13,9 @@ Rails.application.routes.draw do
   get '/all_jetsetters', to: "users#index"
 
   resources :users do
-    resources :trips, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
+    resources :trips do
       resources :favorite_trips, only: [:create, :destroy]
-      resources :activities, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+      resources :activities
     end
     resources :favorite_trips, only: :index
   end
