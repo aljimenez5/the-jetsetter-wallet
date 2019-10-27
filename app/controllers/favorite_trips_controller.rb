@@ -1,7 +1,7 @@
 class FavoriteTripsController < ApplicationController
 
     def index
-        @user_favorites = current_user.favorite_trips
+        @user_favorites = current_user.favorites
     end
 
 
@@ -16,7 +16,7 @@ class FavoriteTripsController < ApplicationController
     end
 
     def destroy
-        @favorite = FavoriteTrip.find_by(trip_id: params[:trip_id], user_id: current_user)
+        @favorite = FavoriteTrip.find_by(trip_id: params[:trip_id], user_id: current_user.id)
         @favorite.delete
         redirect_to user_favorite_trips_path(current_user)
     end
