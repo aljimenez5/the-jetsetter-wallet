@@ -15,7 +15,7 @@ class TripsController < ApplicationController
     end 
 
     def new
-        if params[:user_id] && !User.exists?(params[:user_id])
+        if params[:user_id] && !User.exists?(params[:user_id]) 
             flash[:notice] = "User not found."
             redirect_to users_path
         else
@@ -33,7 +33,8 @@ class TripsController < ApplicationController
             redirect_to user_trips_path(current_user.id)
         elsif @trip
             flash[:notice] = "Trip already exists."
-            redirect_to new_user_trip_path(current_user.id)
+            # redirect_to new_user_trip_path(current_user.id) 
+            render 'new'
         else
             @trip = Trip.new(trip_params)
             @trip.save
