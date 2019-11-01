@@ -3,6 +3,7 @@
     <% @users.each do |user|%>
     <div class="user_container">
         <h3><%= link_to "Jetsetter #{user.username}", user_trips_path(user) %></h3>
-        Cities Visited: <%= user.cities.uniq.count %>
+        Cities Visited: <%= user.cities.count%>
+
     </div>
     <%end%>

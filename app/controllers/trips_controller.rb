@@ -20,6 +20,7 @@ class TripsController < ApplicationController
             redirect_to users_path
         else
             @trip = Trip.new(user_id: current_user.id)
+            @countries = Country.alphabetize
             @trip.build_city
             5.times { @trip.activities.build }
         end
@@ -33,7 +34,6 @@ class TripsController < ApplicationController
             redirect_to user_trips_path(current_user.id)
         elsif @trip
             flash[:notice] = "Trip already exists."
-            # redirect_to new_user_trip_path(current_user.id) 
             render 'new'
         else
             @trip = Trip.new(trip_params)

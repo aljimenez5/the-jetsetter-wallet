@@ -21,7 +21,7 @@ class UsersController < ApplicationController
             redirect_to log_in_path
         elsif params[:user][:password] != params[:user][:password_confirmation]
             flash[:notice] = "Password and Password Confirmation must match."
-            redirect_to sign_up_path
+            render "new"
         else
             user = User.create(user_params)
             session[:user_id] = user.id

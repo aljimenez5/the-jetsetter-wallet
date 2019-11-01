@@ -8,12 +8,6 @@ class Trip < ApplicationRecord
     validates :name, uniqueness: true
 
     
-    scope :city_visited, -> (city) {where("city LIKE ?", city)}
-
-    def city_visited(city)
-        where("city LIKE ?", city)
-    end
-
     def activities_attributes=(activities_attributes)
         activities_attributes.values.each do |activity|
             if activity[:id]

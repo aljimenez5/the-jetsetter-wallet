@@ -1,6 +1,7 @@
 class CountriesController < ApplicationController
     def index
-        @countries = Country.order(:name)
+        @countries = Country.alphabetize
+        
     end 
 
     def new

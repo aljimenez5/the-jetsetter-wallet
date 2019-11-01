@@ -14,7 +14,7 @@
         <br>
         <%= f.fields_for :city do |city_form|%>
             <%= city_form.label :country_id, "Country " %>
-            <%= city_form.collection_select :country_id, Country.order(:name), :id, :name, {:prompt => "Select a country"} %>
+            <%= city_form.collection_select :country_id, @countries, :id, :name, {:prompt => "Select a country"} %>
             <%= city_form.label :name, "City " %>
             <%= city_form.text_field :name %>
         <%end%>
