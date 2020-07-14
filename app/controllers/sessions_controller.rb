@@ -21,9 +21,11 @@ class SessionsController < ApplicationController
             flash[:notice] = "Incorrect email and/or password."
             render "new"
         end
+    
     end
 
     def create_omniauth
+        
         @user = User.find_or_create_by(uid: auth['uid']) do |u|
             u.username = auth['info']['name']
             u.email = auth['info']['email']

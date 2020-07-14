@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   post '/sign_up', to: "users#create"
   get '/log_in', to: "sessions#new"
   post '/log_in', to: "sessions#create"
-  get '/auth/google_oauth2/callback', to: 'sessions#create_omniauth'
+  get '/auth/:provider/callback', to: 'sessions#create_omniauth'
   get '/log_out', to: "sessions#destroy"
   delete '/log_out', to: "sessions#destroy"
   get '/all_countries', to: "countries#index"
